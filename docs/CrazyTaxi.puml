@@ -1,0 +1,89 @@
+@startuml CrazyTaxi
+
+class Juego{
+ + Jugar()  
+}
+class Taxista{
+    + manejar()
+    + acelerar()
+    + frenar()
+    + saltar()
+    + recoger_pasajero()
+    + entregar_pasajero()
+}
+class Personaje{
+    + Mostrar()
+    + Seleccionar_personaje()
+}
+class Pasajero{
+    + Pagar()
+    +asignar_destino()
+    + obtener_destino()
+}
+class Marcador{
+    + Mostrar()
+}
+class Destino{
+    +mostrar_destino()
+}
+class Taxi{
+    + Subir_pasajero()
+    + Bajar_pasajero()
+}
+class Cronometro {
+     + iniciar() 
+     + detener() 
+     + restar_tiempo()
+}
+class Trafico {
+    + generar_tráfico() 
+    + ajustar_velocidad()
+}
+class Menu{
++ Mostrar() 
++ seleccionar_opción()
++ seleccionar_dificultad() 
+
+}
+class Dinero{
+    +pagar()
+}
+class Nivel{
+   + Seleccionar_nivel() 
+}
+class Powerup{
+    + aplicar_mejora() 
+    + duración_mejora()
+}
+class Calle
+class Moneda {
+    +recolectar() 
+    + usar()
+}
+class Mapa{
+    +mostrar_mapa()
+}
+class Ciudad{
+    +crear_calles()
+    +crear_edificios()
+}
+
+Juego*-- Menu
+Menu *-- Marcador
+Menu*-- Nivel
+Nivel*-- Personaje
+Personaje <|-- Taxista
+Taxista o-- Taxi
+Taxi *-- Pasajero
+Taxista o--- Powerup
+Taxista*-- Cronometro
+
+Pasajero o-- Dinero
+Pasajero *-- Destino
+ 
+Mapa *-- Ciudad
+Ciudad *-- Calle
+Destino --* Mapa  
+Calle *-- Trafico
+Calle*-- Moneda
+@enduml   
